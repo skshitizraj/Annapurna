@@ -29,3 +29,5 @@ class annapurna(models.Model):
     shape_leng = models.FloatField()
     shape_area = models.FloatField()
     geom = geomodels.MultiPolygonField(srid=4326)
+    class Meta:
+        verbose_name_plural = "Annapurna"

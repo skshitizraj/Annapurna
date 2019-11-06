@@ -8,21 +8,21 @@ class schooladmin(LeafletGeoAdmin):
     settings_overrides =  {
         'DEFAULT_CENTER': (28.333, 84.000),
         'DEFAULT_ZOOM': 12,
-        'MIN_ZOOM': 5,
+        'MIN_ZOOM': 5,  
         'MAX_ZOOM': 24,
         'TILES': [('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
     }
 class annapurnaadmin(LeafletGeoAdmin):
+    
     list_display=('new_ward_n','gapa_napa')
+    ordering = ('new_ward_n',)
     settings_overrides =  {
-        'DEFAULT_CENTER': (28.333, 84.000),
+        # 'DEFAULT_CENTER': (28.333, 84.000),
         'DEFAULT_ZOOM': 12,
         'MIN_ZOOM': 5,
         'MAX_ZOOM': 24,
-        'TILES': [('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
+        'TILES': [('Google Streets','http://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',''),('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
     }
 admin.site.register(annapurna,annapurnaadmin)
 
 admin.site.register(school,schooladmin)
-# admin.site.register(Profile)
-# admin.site.register(Skill)
