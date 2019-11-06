@@ -13,7 +13,14 @@ class schooladmin(LeafletGeoAdmin):
         'TILES': [('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
     }
 class annapurnaadmin(LeafletGeoAdmin):
-    list_display=('palika','gapa_napa')
+    list_display=('new_ward_n','gapa_napa')
+    settings_overrides =  {
+        'DEFAULT_CENTER': (28.333, 84.000),
+        'DEFAULT_ZOOM': 12,
+        'MIN_ZOOM': 5,
+        'MAX_ZOOM': 24,
+        'TILES': [('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
+    }
 admin.site.register(annapurna,annapurnaadmin)
 
 admin.site.register(school,schooladmin)

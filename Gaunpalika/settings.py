@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Gaunpalika.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'postgres',
+        'NAME': 'annapurna',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
