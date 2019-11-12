@@ -68,8 +68,10 @@
             <div class="row">
                 <div class="col-md-8" id="mapid" style="/*outline: dashed;*//*outline-width: thin;*/padding-left: 15px;padding-right: 15px;"></div>
                 <div class="col-md-4" id="sidebar">
-                    <div class="Tohide">
-                        <div class="card border rounded"></div>
+                    <!-- <div class="popup" id="popup" style="display:none">
+                        <strong>Annapurna Gaunpalika</strong>
+                    </div> -->
+                    <div class="Tohide" id="toHide">
                         <div><canvas data-bs-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Education&quot;,&quot;NGO/INGO&quot;,&quot;Health&quot;,&quot;Industry&quot;,&quot;Finance&quot;,&quot;Other&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:[&quot;#1a5286&quot;,&quot;#1a5286&quot;,&quot;#1a5286&quot;,&quot;#1a5286&quot;,&quot;#1a5286&quot;,&quot;#1a5286&quot;],&quot;borderColor&quot;:[&quot;#f4f4f4&quot;,&quot;#f4f4f4&quot;,&quot;#f4f4f4&quot;,&quot;#f4f4f4&quot;,&quot;#f4f4f4&quot;,&quot;#f4f4f4&quot;],&quot;data&quot;:[&quot;4500&quot;,&quot;5300&quot;,&quot;6250&quot;,&quot;7800&quot;,&quot;9800&quot;,&quot;15000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;bottom&quot;},&quot;title&quot;:{&quot;display&quot;:false,&quot;text&quot;:&quot;Count&quot;}}}"></canvas></div>
                         <div class="card border rounded">
                             <div class="card-header text-white" style="background-color: #1a5286;">
@@ -95,13 +97,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header text-white" style="background-color: #1a5286;">
-                        <h5 class="mb-0">Land Use / Cover</h5>
-                        </div>
-                        <div class="card-body">
-                            <div style="min-height: 150px;"><canvas data-bs-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;January&quot;,&quot;February&quot;,&quot;March&quot;,&quot;April&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:[&quot;rgba(242,24,10,0.1)&quot;,&quot;rgb(245,193,9)&quot;,&quot;rgba(56,244,9,0.1)&quot;,&quot;rgba(12,247,204,0.1)&quot;,&quot;#6485e6&quot;,&quot;#6485e6&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;4500&quot;,&quot;5300&quot;,&quot;6250&quot;,&quot;7800&quot;,&quot;9800&quot;,&quot;15000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;right&quot;},&quot;title&quot;:{}}}"></canvas></div>
+                        <div class="card">
+                            <div class="card-header text-white" style="background-color: #1a5286;">
+                            <h5 class="mb-0">Land Use / Cover</h5>
+                            </div>
+                            <div class="card-body">
+                                <div style="min-height: 150px;"><canvas data-bs-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;January&quot;,&quot;February&quot;,&quot;March&quot;,&quot;April&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:[&quot;rgba(242,24,10,0.1)&quot;,&quot;rgb(245,193,9)&quot;,&quot;rgba(56,244,9,0.1)&quot;,&quot;rgba(12,247,204,0.1)&quot;,&quot;#6485e6&quot;,&quot;#6485e6&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;4500&quot;,&quot;5300&quot;,&quot;6250&quot;,&quot;7800&quot;,&quot;9800&quot;,&quot;15000&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;position&quot;:&quot;right&quot;},&quot;title&quot;:{}}}"></canvas></div>
+                            </div>
                         </div>
                     </div>
                 </div>

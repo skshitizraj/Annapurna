@@ -39,9 +39,20 @@ $(document).ready(function () {
                 
                 // map.addLayer(osm);
     layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
-    var base= new L.geoJson.ajax("assests/data/annapurna.geojson", { 
-        console.log("from inside");
-              });
-    base.addto(map);
-    });
-                  
+    // var base= new L.geoJson.ajax("assests/data/annapurna.geojson", { 
+    //     console.log("from inside");
+    //           });
+    // base.addto(map);
+    var marker = L.marker([28.2096, 83.9856]).addTo(map);
+    marker.on('click', function(){
+        document.getElementById('toHide').style.display='none';
+        var element = document.createElement("toShow");
+        document.getElementById("sidebar").appendChild(element);
+        }
+    );
+    // marker.on('click', function(){
+    //     document.getElementById('toHide').style.display='none';
+    //     document.getElementById('popup').style.display='block';
+    //     }
+    // );
+});
