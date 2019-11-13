@@ -39,10 +39,16 @@ $(document).ready(function () {
                 
                 // map.addLayer(osm);
     layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
-    // var base= new L.geoJson.ajax("assests/data/annapurna.geojson", { 
-    //     console.log("from inside");
+    // var base= new L.geoJson.ajax("http://127.0.0.1:8000/api/annapurna", { 
+    //     // console.log("from inside");
     //           });
     // base.addto(map);
+    $.getJSON("http://127.0.0.1:8000/baseapi/", function (data) {
+        console.log('from tera baje');
+        var dataLayer=L.geoJson(data, {
+        //  console.log("kodsafjakdlfjasd");
+        }).addTo(map);
+      });
     var marker = L.marker([28.2096, 83.9856]).addTo(map);
     // marker.on('click', function(){
     //     document.getElementById('toHide').style.display='none';

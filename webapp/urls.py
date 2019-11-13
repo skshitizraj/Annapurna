@@ -8,6 +8,7 @@ router.register(r'annapurna', views.annapurnaviewset)
 urlpatterns = [
     path('baseapi/', views.baseapi,name='Geojsonbase'),
     path('',views.homepage,name='home'),
+    path('map/',views.mappage,name='map'),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
   

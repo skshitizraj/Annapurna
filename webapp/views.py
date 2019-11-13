@@ -14,6 +14,9 @@ def baseapi(request):
 def homepage(request):
     template_name= 'Home.html'
     return render(request,template_name)
+def mappage(request):
+    template_name= 'map.html'
+    return render(request,template_name)
 # @login_required
 class annapurnaviewset(viewsets.ModelViewSet):
     queryset = annapurna.objects.all().order_by('new_ward_n')
