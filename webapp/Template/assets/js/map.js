@@ -44,15 +44,20 @@ $(document).ready(function () {
     //           });
     // base.addto(map);
     var marker = L.marker([28.2096, 83.9856]).addTo(map);
-    marker.on('click', function(){
-        document.getElementById('toHide').style.display='none';
-        var element = document.createElement("toShow");
-        document.getElementById("sidebar").appendChild(element);
-        }
-    );
     // marker.on('click', function(){
     //     document.getElementById('toHide').style.display='none';
-    //     document.getElementById('popup').style.display='block';
+    //     var element = document.createElement("toShow");
+    //     document.getElementById("sidebar").appendChild(element);
     //     }
     // );
+    marker.on('click', function(){
+        document.getElementById('toHide').style.display='none';
+        document.getElementById('popup').style.display='block';
+        }
+    );
+    $(function(){
+        $('.mapid').click(function() {
+        $('.toHide').show();
+        });
+    });
 });
