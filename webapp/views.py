@@ -21,4 +21,5 @@ def mappage(request):
 class annapurnaviewset(viewsets.ModelViewSet):
     queryset = annapurna.objects.all().order_by('new_ward_n')
     serializer_class=annapurnaSerializer
+    # return JsonResponse(serializer_class, safe=False)
     http_method_names = ['get', 'head','optionsc']

@@ -43,7 +43,7 @@ $(document).ready(function () {
     //     // console.log("from inside");
     //           });
     // base.addto(map);
-    $.getJSON("http://127.0.0.1:8000/baseapi/", function (data) {
+    $.getJSON("http://127.0.0.1:8000/api/annapurna.json", function (data) {
         console.log('from tera baje');
         var dataLayer=L.geoJson(data, {
         //  console.log("kodsafjakdlfjasd");
