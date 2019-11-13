@@ -59,7 +59,7 @@ ROOT_URLCONF = 'Gaunpalika.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'Template')],
+        'DIRS': [os.path.join(BASE_DIR,'webapp/Template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
