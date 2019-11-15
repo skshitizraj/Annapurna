@@ -42,15 +42,17 @@ $(document).ready(function () {
     $.getJSON("http://127.0.0.1:8000/api/annapurna", function (data) {
         console.log('from tera baje');
         var dataLayer=L.geoJson(data,{
-            style: countriesStyle,
+            style: wardStyle,
             onEachFeature: onEachFeature,
         }).addTo(map);
 
-        function countriesStyle(feature) {
+        function wardStyle(feature) {
             return {
-                fillColor: " #ffff01 ",
-                fillOpacity: 1,
-                color: '#172f76',
+                // fillColor: " #ffff01 ",
+                // color: '#172f76',
+                fillColor: " #172f76 ",
+                fillOpacity: 0.9,
+                color:"#ffffff",
                 opacity: 1,
                 weight: 2,
             }
@@ -60,17 +62,25 @@ $(document).ready(function () {
             layer.on({
                 mouseover: function () {
                     this.setStyle({
-                        'fillOpacity':0,
+                        'fillOpacity':0.3,
                     });
                 },
                 mouseout: function () {
                     this.setStyle({
-                        'fillColor': ' #ffff01 ',
-                        'fillOpacity':1,
+                        // 'fillColor': ' #ffff01 ',
+                        'fillColor': ' #172f76 ',
+                        'fillOpacity':0.9,
                     });
                 }
             });
-            layer.bindTooltip(String(feature.properties.new_ward_n), {permanent:true,direction:'center',className: 'countryLabel'});
+            layer.bindTooltip(String(feature.properties.new_ward_n), {permanent:true,direction:'center',className: 'wardClassName'});
+            
+            layer.on('click', function (e) {
+                document.getElementById('toHide').style.display='none';
+                document.getElementById('popup').style.display='block';
+
+
+            });
         }
         map.fitBounds(dataLayer.getBounds());
       });
