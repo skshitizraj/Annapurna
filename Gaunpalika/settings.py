@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'leaflet',
     'rest_framework',
     'rest_framework_gis',
+    'import_export',
 ]
 
 MIDDLEWARE = [
