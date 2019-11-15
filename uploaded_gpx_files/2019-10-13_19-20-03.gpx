@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="OSMTracker for Android™ - https://github.com/labexp/osmtracker-android" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd ">
+	<metadata>
+		<keywords>osmtracker</keywords>
+	</metadata>
+	<wpt lat="28.37495223" lon="83.80819497">
+		<ele>1938.5302734375</ele>
+		<time>2019-10-13T13:35:18Z</time>
+		<name><![CDATA[Emergency Phone]]></name>
+		<sat>0</sat>
+	</wpt>
+	<wpt lat="28.37495549" lon="83.8082054">
+		<ele>1941.202880859375</ele>
+		<time>2019-10-13T13:35:19Z</time>
+		<name><![CDATA[Parking]]></name>
+		<sat>0</sat>
+	</wpt>
+	<trk>
+		<name><![CDATA[Tracked with OSMTracker for Android™]]></name>
+		<trkseg>
+			<trkpt lat="28.37473422" lon="83.80800048">
+				<ele>1878.1806640625</ele>
+				<time>2019-10-13T13:35:16Z</time>
+				<extensions>
+					<speed>0.1899999976158142</speed>
+				</extensions>
+			</trkpt>
+			<trkpt lat="28.3749333" lon="83.80815327">
+				<ele>1928.2978515625</ele>
+				<time>2019-10-13T13:35:17Z</time>
+				<extensions>
+					<speed>0.0</speed>
+				</extensions>
+			</trkpt>
+			<trkpt lat="28.37495223" lon="83.80819497">
+				<ele>1938.5302734375</ele>
+				<time>2019-10-13T13:35:18Z</time>
+				<extensions>
+					<speed>0.0</speed>
+				</extensions>
+			</trkpt>
+			<trkpt lat="28.37495549" lon="83.8082054">
+				<ele>1941.202880859375</ele>
+				<time>2019-10-13T13:35:19Z</time>
+				<extensions>
+					<speed>0.0</speed>
+				</extensions>
+			</trkpt>
+			<trkpt lat="28.37494698" lon="83.80821219">
+				<ele>1943.690673828125</ele>
+				<time>2019-10-13T13:35:20Z</time>
+				<extensions>
+					<speed>0.0</speed>
+				</extensions>
+			</trkpt>
+		</trkseg>
+	</trk>
+</gpx>
