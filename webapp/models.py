@@ -56,13 +56,14 @@ class annapurna(models.Model):
     geom = geomodels.MultiPolygonField(srid=4326)
     class Meta:
         verbose_name_plural = "Annapurna"
-class gpxfile(models.Model):
-    name= models.CharField(max_length=50)
+
+class gpx(models.Model):
+    title= models.CharField(max_length=50)
     description= models.TextField(max_length=200)
     lat= models.FloatField()
     lon=models.FloatField()
     elevation=models.FloatField()
-    location= geomodels.PointField((lon,lat),srid=4326)
+    # location= geomodels.PointField(srid=4326)
 
 
 # def GPX_Folder(instance, filename):
