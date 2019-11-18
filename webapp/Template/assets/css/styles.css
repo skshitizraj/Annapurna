@@ -145,9 +145,9 @@ body {
   text-decoration: none;
   background-color: #1a5286;
 }
-
+/* 
 .mb-0, .my-0 {
-}
+} */
 
 .card-header {
   /*padding: .75rem 1.25rem;*/
@@ -164,8 +164,8 @@ body {
 }
 
 .card-body {
-  -ms-flex: 1 1 auto;
-  /*flex: 1 1 auto;*/
+  /* -ms-flex: 1 1 auto; */
+  flex: 1 1 auto;
   padding: 1.25rem;
 }
 
@@ -175,4 +175,17 @@ body {
   border-radius:0px;
   box-shadow: 0 0px 0px;
   color: #ffffff;
+}
+
+.backgroundcolourcss{
+  background-color: #1a5286;
+  color: #ffffff;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.rightside{
+  text-align: right;
+  color:#ffffff;
 }
