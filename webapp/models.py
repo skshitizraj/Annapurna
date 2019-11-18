@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.gis.db import models as geomodels
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.gis.geos import GEOSGeometry
 
 # Create your models here.
 
@@ -58,11 +61,24 @@ class annapurna(models.Model):
         verbose_name_plural = "Annapurna"
 
 class gpx(models.Model):
+    GPX_CHOICES =(
+        ('School','School'),
+        ('Annapurna','Annapurna'),
+    )
     title= models.CharField(max_length=50)
     description= models.TextField(max_length=200)
     lat= models.FloatField()
     lon=models.FloatField()
     elevation=models.FloatField()
+    field= models.CharField(max_length=40,choices=GPX_CHOICES,null=True)
+
+@receiver(post_save, sender=gpx)
+def make_author(sender, instance, created, **kwargs):
+    
+    if instance.field=='School':
+        school.objects.create(name=instance.title)
+        school.objects.create(location=GEOSGeometry('POINT(%f, %f)' % (instance.lon, instance.lat)))
+        
     # location= geomodels.PointField(srid=4326)
 
 

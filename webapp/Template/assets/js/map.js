@@ -38,6 +38,9 @@ $(document).ready(function () {
                 };
                 
     layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
+    // const ee = require('@google/earthengine');
+    // ee.data.authenticateViaPrivateKey('data/privatekey.json');
+    // ee.initialize();
 
     $.getJSON("http://127.0.0.1:8000/api/annapurna", function (data) {
         console.log('from tera baje');
