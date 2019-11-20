@@ -187,5 +187,6 @@ body {
 
 .rightside{
   text-align: right;
-  color:#ffffff;
+  color:#000000;
+  background-color: #1a5286;
 }

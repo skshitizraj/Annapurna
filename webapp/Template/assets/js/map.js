@@ -39,7 +39,7 @@ $(document).ready(function () {
                 
     layerswitcher = L.control.layers(baseLayers, {}, {collapsed: true}).addTo(map);
 
-    $.getJSON("http://127.0.0.1:8000/api/annapurna", function (data) {
+    $.getJSON("http://127.0.0.1:8000/api/ward/all", function (data) {
         // console.log('from');
         var dataLayer=L.geoJson(data,{
             style:{
@@ -50,6 +50,7 @@ $(document).ready(function () {
                 weight: 2,
             },
             onEachFeature:function(feature, layer) {
+
                 layer.on({
                     mouseover: function () {
                         this.setStyle({
@@ -58,24 +59,22 @@ $(document).ready(function () {
                     },
                     mouseout: function () {
                         this.setStyle({
-                            // 'fillColor': ' #ffff01 ',
                             'fillColor': ' #172f76 ',
                             'fillOpacity':0.9,
                         });
                     },
                     click: function (event) {
                         if (event.target==layer){
-                            // console.log("hello");
+                            // console.log("hello there");
                             document.getElementById('toHide').style.display='none';
-                            document.getElementById('popup').innerHTML="<a class=\"nav-link rightside\" function=\"cross\">Cancel<i class=\"la la-close\"></i></a>";
+                            document.getElementById('popup').style.display='block';
+                            document.getElementById('popup').innerHTML="<button type=\"button\" class=\"close rightside\"  id=\"uniqueId\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>";
 
                             var tableContent=document.createElement("TableContent");
                             var tableTitle=document.createElement("TableTitle");    
                             var table=document.createElement("Table");
                             var crossmarker=document.createElement("crossmark");
-                            // crossmarker.setAttribute("class","la la-close rightside");
                             tableTitle.setAttribute("class","card border rounded card-header backgroundcolourcss h5");
-                            // tableTitle.appendChild(crossmarker);
                             var text1 = document.createTextNode("Annapurna RM");
                             tableTitle.appendChild(text1);
                             table.setAttribute("class","table table-bordered table-hover");
@@ -85,6 +84,12 @@ $(document).ready(function () {
                             tableContent.appendChild(tableTitle);
                             tableContent.appendChild(table);
                             document.getElementById("popup").appendChild(tableContent);
+
+                            document.getElementById("uniqueId").onclick = function (){
+                                // console.log("hello");
+                                document.getElementById('popup').style.display="none";
+                                document.getElementById('toHide').style.display='block';
+                            }
                         }
                     }
                 });
