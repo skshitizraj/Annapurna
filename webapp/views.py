@@ -29,6 +29,7 @@ def mappage(request):
 class annapurnaviewset(generics.ListAPIView):
     serializer_class=annapurnaSerializer
     def get_queryset(self):
+        #this is sample
         """
         This view should return a list of all the purchases for
         the user as determined by the username portion of the URL.
