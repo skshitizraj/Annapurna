@@ -11,7 +11,7 @@ class SchoolResource(resources.ModelResource):
 
 class schooladmin(LeafletGeoAdmin,ImportExportModelAdmin):
     resource_class = SchoolResource
-    list_display=('name','Type','school_location')
+    list_display=('name','Type','school_location','status')
     settings_overrides =  {
         'DEFAULT_CENTER': (28.333, 84.000),
         'DEFAULT_ZOOM': 12,
@@ -30,17 +30,17 @@ class annapurnaadmin(LeafletGeoAdmin):
         'MAX_ZOOM': 24,
         'TILES': [('Google Streets','http://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',''),('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
     }
-class gpxadmin(LeafletGeoAdmin):
+class gpxadmin(LeafletGeoAdmin,ImportExportModelAdmin):
     
     list_display=('title','description')
     # ordering = ('new_ward_n',)
-    settings_overrides =  {
-        'DEFAULT_CENTER': (28.333, 84.000),
-        'DEFAULT_ZOOM': 12,
-        'MIN_ZOOM': 5,  
-        'MAX_ZOOM': 24,
-        'TILES': [('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
-    }
+    # settings_overrides =  {
+    #     'DEFAULT_CENTER': (28.333, 84.000),
+    #     'DEFAULT_ZOOM': 12,
+    #     'MIN_ZOOM': 5,  
+    #     'MAX_ZOOM': 24,
+    #     'TILES': [('Google Terrain','http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',''),('OSM','//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',''),('Google Satellite','http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}','')],
+    # }
 
 admin.site.register(annapurna,annapurnaadmin)
 

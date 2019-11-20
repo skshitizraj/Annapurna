@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.gis.db import models as geomodels
+from django.contrib.gis.geos import Point
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.gis.geos import GEOSGeometry
+
 
 # Create your models here.
 
@@ -28,13 +30,13 @@ class school(models.Model):
         ('updated','Updated'),
         ('notupdated','Not Updated'),
     )
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=40,default='Null')
     principal_name=models.CharField(max_length=40,blank=True)
     no_of_buildings=models.FloatField(blank=True,null=True)
     no_of_staffs= models.FloatField(blank=True,null=True)
     no_of_students= models.FloatField(blank=True,null=True)
     school_location= models.CharField(max_length=40,choices=WARD_CHOICES,null=True)
-    status= models.CharField(max_length=20,choices=STATUS_CHOICES,default=STATUS_CHOICES[0][0],null=True)
+    status= models.CharField(max_length=20,choices=STATUS_CHOICES,default=STATUS_CHOICES[1][1],null=True)
     contact=models.CharField(max_length=10,blank=True,null=True)
     location = geomodels.PointField(srid=4326,null=True)
     Type = models.CharField(max_length=40,choices=SCHOOL_CHOICES,blank=True)
@@ -76,8 +78,9 @@ class gpx(models.Model):
 def make_author(sender, instance, created, **kwargs):
     
     if instance.field=='School':
-        school.objects.create(name=instance.title)
-        school.objects.create(location=GEOSGeometry('POINT(%f, %f)' % (instance.lon, instance.lat)))
+        school.objects.create(name=instance.title,location=Point(instance.lon, instance.lat))
+        # school.objects.create(location=GEOSGeometry('POINT(%f %f)' % (instance.lat, instance.lon)))
+        
         
     # location= geomodels.PointField(srid=4326)
 

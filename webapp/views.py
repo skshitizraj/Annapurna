@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from rest_framework import viewsets
 from .serializers import annapurnaSerializer
 from django.contrib.auth.decorators import login_required
-
+from rest_framework import generics
 from django.conf import settings
 
 # import gpxpy
@@ -26,12 +26,24 @@ def homepage(request):
 def mappage(request):
     template_name= 'map.html'
     return render(request,template_name)
-# @login_required
-class annapurnaviewset(viewsets.ModelViewSet):
-    queryset = annapurna.objects.all().order_by('new_ward_n')
+class annapurnaviewset(generics.ListAPIView):
     serializer_class=annapurnaSerializer
-    # return JsonResponse(serializer_class, safe=False)
-    http_method_names = ['get', 'head','optionsc']
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        wardname= self.kwargs['wardno']
+        if wardname != 'all':
+            return annapurna.objects.filter(new_ward_n=wardname)
+        else:
+            return annapurna.objects.all()
+        
+
+
+
+
+
 # def SaveGPXtoPostGIS(f, file_instance):
     
 #     gpx_file = open(settings.MEDIA_ROOT+ '/uploaded_gpx_files'+'/' + f.name)
