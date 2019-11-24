@@ -3,11 +3,11 @@ from django.shortcuts import render_to_response
 from django.core.serializers import serialize
 from django.views.decorators import csrf
 from django.contrib.gis.geos import Point, LineString, MultiLineString
-from .models import annapurna
+from .models import annapurna,school
 from django.http import HttpResponse
 # from .forms import UploadGpxForm
 from rest_framework import viewsets
-from .serializers import annapurnaSerializer
+from .serializers import annapurnaSerializer,schoolSerializer
 from django.contrib.auth.decorators import login_required
 from rest_framework import generics
 from django.conf import settings
@@ -17,9 +17,9 @@ from django.conf import settings
 
 
 # Create your views here.
-def baseapi(request):
-    base=serialize('geojson',annapurna.objects.all())
-    return HttpResponse(base,content_type='json')
+# def baseapi(request):
+#     base=serialize('geojson',annapurna.objects.all())
+#     return HttpResponse(base,content_type='json')
 def homepage(request):
     template_name= 'Home.html'
     return render(request,template_name)
@@ -39,6 +39,27 @@ class annapurnaviewset(generics.ListAPIView):
             return annapurna.objects.filter(new_ward_n=wardname)
         else:
             return annapurna.objects.all()
+
+class schoolviewset(generics.ListAPIView):
+    serializer_class=schoolSerializer
+    def get_queryset(self):
+        #this is sample
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        wardname= self.kwargs['wardno']
+        newtype= self.kwargs['type']
+        if wardname != 'all':
+            if newtype!='all':
+                # return school.objects.filter(school_location=wardname)
+                return school.objects.filter(school_location=wardname,Type=newtype)
+            return school.objects.filter(school_location=wardname)
+        else:
+            if newtype!='all':
+                return school.objects.filter(Type=newtype)
+            return school.objects.all()
+      
         
 
 
