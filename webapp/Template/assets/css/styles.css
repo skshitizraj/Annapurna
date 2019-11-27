@@ -185,7 +185,10 @@ body {
   line-height: 1.2;
 }
 
-.rightside{
-  text-align: right;
-  color:#ffffff;
+#close{
+  color:#1a5286;
+}
+
+.fontSize{
+  font-size: 15px;
 }
