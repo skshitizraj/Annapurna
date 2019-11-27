@@ -14,17 +14,17 @@ class school(models.Model):
         ('Private','Private'),
     )
     WARD_CHOICES =(
-        ('wardno1','Ward No 1'),
-        ('wardno2','Ward No 2'),
-        ('wardno3','Ward No 3'),
-        ('wardno4','Ward No 4'),
-        ('wardno5','Ward No 5'),
-        ('wardno6','Ward No 6'),
-        ('wardno7','Ward No 7'),
-        ('wardno8','Ward No 8'),
-        ('wardno9','Ward No 9'),
-        ('wardno10','Ward No 10'),
-        ('wardno11','Ward No 11'),
+        ('1','Ward No 1'),
+        ('2','Ward No 2'),
+        ('3','Ward No 3'),
+        ('4','Ward No 4'),
+        ('5','Ward No 5'),
+        ('6','Ward No 6'),
+        ('7','Ward No 7'),
+        ('8','Ward No 8'),
+        ('9','Ward No 9'),
+        ('10','Ward No 10'),
+        ('11','Ward No 11'),
     )
     STATUS_CHOICES=(
         ('updated','Updated'),
