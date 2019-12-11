@@ -188,6 +188,10 @@ body {
 #close{
   color:#f3f3f3;
   float:right;
+  margin-top:2px;
+  border:2px solid white;
+  border-radius: 25px;
+  padding-right:5px;
 }
 
 .fontSize{

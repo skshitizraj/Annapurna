@@ -1,6 +1,10 @@
 function cancelfunction() {
     console.log("i am cancel");
-  }
+    location.reload();
+}
+function applyfunction(){
+    console.log("i am apply");
+}
 $(document).ready(function () {
     
     // console.log("sdfasd");
