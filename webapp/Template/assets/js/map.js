@@ -59,11 +59,7 @@ $(document).ready(function () {
     // ee.data.authenticateViaPrivateKey('data/privatekey.json');
     // ee.initialize();
 
-<<<<<<< HEAD
     $.getJSON("http://127.0.0.1:8000/api/ward/all", function (data) {
-=======
-    $.getJSON("http://127.0.0.1:8000/api/ward/all/", function (data) {
->>>>>>> 5e7b0ce4c26cafe8af0bafbf6ac30e52c220fdce
         // console.log('from');
         var dataLayer=L.geoJson(data,{
             style:{
