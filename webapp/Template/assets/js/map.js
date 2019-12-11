@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     var map = L.map('mapid',{
         minZoom:10.5,
+        preferCanvas:true,
     });
     map.setView([28.2957487, 83.8123341], 10.5);
 
@@ -28,6 +29,22 @@ $(document).ready(function () {
     });
     mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/skshitiz1/cjvosths00oqu1cln1v7765pf/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic2tzaGl0aXoxIiwiYSI6ImNqcmJ2czBjODBhMTgzeWxwM2t1djJuaXUifQ.wlFktg-soH3B_pqVyJj2Ig')
     
+    var printProvider = L.print.Provider({
+        method: 'GET',
+        url: ' http://path/to/mapfish/print',
+        autoLoad: true,
+        dpi: 90
+     });
+     
+     var printControl = L.control.print({
+        provider: printProvider
+     });        
+     map.addControl(printControl);
+       
+
+
+
+
     var baseLayers = {
                     "OpenStreetMap": osm,
                     "Google Streets": googleStreets,
@@ -42,7 +59,7 @@ $(document).ready(function () {
     // ee.data.authenticateViaPrivateKey('data/privatekey.json');
     // ee.initialize();
 
-    $.getJSON("http://127.0.0.1:8000/api/annapurna", function (data) {
+    $.getJSON("http://127.0.0.1:8000/api/ward/all", function (data) {
         // console.log('from');
         var dataLayer=L.geoJson(data,{
             style:{
