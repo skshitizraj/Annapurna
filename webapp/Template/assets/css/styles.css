@@ -186,7 +186,8 @@ body {
 }
 
 #close{
-  color:#1a5286;
+  color:#f3f3f3;
+  float:right;
 }
 
 .fontSize{
