@@ -1,10 +1,4 @@
-function cancelfunction() {
-    console.log("i am cancel");
-    location.reload();
-}
-function applyfunction(){
-    console.log("i am apply");
-}
+
 $(document).ready(function () {
     
     // console.log("sdfasd");
@@ -59,83 +53,108 @@ $(document).ready(function () {
       });
 
     //now to get json from api
-    $.getJSON("http://127.0.0.1:8000/api/ward/all", function (data) {
-        console.log('from');
-        var area=0.000;
-        // for( var i=0 ; i<data.length;i++){
-        //     var area = 0;
-        //     area=area+feature[i].properties.area_sqkm;
-        //     console.log('FROM FOR');
-        // }
-        var dataLayer=L.geoJson(data,{
-            style:{
-                fillColor: " #172f76 ",
-                fillOpacity: 0.9,
-                color:"#ffffff",
-                opacity: 1,
-                weight: 2,
-            },
-            onEachFeature:function(feature, layer) {
-                
-                area = area + parseFloat(feature.properties.area_sqkm);
-                console.log(area);
-                layer.on({
-                    mouseover: function () {
-                        this.setStyle({
-                            'fillOpacity':0.3,
-                        });
-                    },
-                    mouseout: function () {
-                        this.setStyle({
-                            // 'fillColor': ' #ffff01 ',
-                            'fillColor': ' #172f76 ',
-                            'fillOpacity':0.9,
-                        });
-                    },
-                    click: function (event) {
-                        if (event.target==layer){
-                            // console.log("hello");
-                            document.getElementById('toHide').style.display='none';
-                            document.getElementById('popup').innerHTML="";
+    var urltoload="http://127.0.0.1:8000/api/ward/all"
+    var dataLayer;
+    jsonload();
+    $("#cancelme").click(function(){
+        location.reload();
+    });
 
-                            var tableContent=document.createElement("TableContent");
-                            var tableTitle=document.createElement("TableTitle");    
-                            var table=document.createElement("Table");
-                            var tableOuter=document.createElement("Tableouter");
-                            var crossmarker=document.createElement("i");
-                            tableOuter.setAttribute("class","card-body d-table");
-                            crossmarker.setAttribute("class","la la-close");
-                            crossmarker.setAttribute("id","close");
-                            tableContent.setAttribute("class","card border rounded");
-                            tableTitle.setAttribute("class","card-header text-white backgroundcolourcss h5");
-                            var text1 = document.createTextNode("Annapurna RM");
-                            tableTitle.appendChild(text1);
-                            // tableTitle.appendChild(crossmarker);
-                            table.setAttribute("class","table-responsive table-borderless table table-hover fontSize");
+    $( "#apply" ).click(function() {
+        // alert( "Handler for .click() called." );
+        var ward = $("#ward").find('.btn').text();
+        var wardno= ward.slice(8,9);
+        urltoload="http://127.0.0.1:8000/api/ward/"+wardno;
+        map.removeLayer(dataLayer);
+        jsonload();
+        console.log(urltoload);
+        var a=1;
+      });
+    function jsonload(){
+        $.getJSON(urltoload, function (data) {
+            console.log('from');
+            console.log(ward);
+            var area=0.000;
+            dataLayer=L.geoJson(data,{
+                style:{
+                    fillColor: " #172f76 ",
+                    fillOpacity: 0.9,
+                    color:"#ffffff",
+                    opacity: 1,
+                    weight: 2,
+                },
+                onEachFeature:function(feature, layer) {
+                    
+                    area = area + parseFloat(feature.properties.area_sqkm);
+                    console.log(area);
+                    layer.on({
+                        mouseover: function () {
+                            this.setStyle({
+                                'fillOpacity':0.3,
+                            });
+                        },
+                        mouseout: function () {
+                            this.setStyle({
+                                // 'fillColor': ' #ffff01 ',
+                                'fillColor': ' #172f76 ',
+                                'fillOpacity':0.9,
+                            });
+                        },
+                        click: function (event) {
+                            if (event.target==layer){
+                                // console.log("hello");
+                                document.getElementById('toHide').style.display='none';
+                                document.getElementById('popup').innerHTML="";
     
-                            table.innerHTML+="<table><thead class=\"text-left\"><tr></tr></thead><tbody><tr><td>Ward Number</td><td>"+feature.properties.new_ward_n+"</td></tr><tr><td>District</td><td>"+feature.properties.district+"</td></tr><tr><td>Area (sq.km.)</td><td>"+feature.properties.area_sqkm+"</td></tr></tbody></table>";
+                                var tableContent=document.createElement("TableContent");
+                                var tableTitle=document.createElement("TableTitle");    
+                                var table=document.createElement("Table");
+                                var tableOuter=document.createElement("Tableouter");
+                                var crossmarker=document.createElement("i");
+                                tableOuter.setAttribute("class","card-body d-table");
+                                crossmarker.setAttribute("class","la la-close");
+                                crossmarker.setAttribute("id","close");
+                                tableContent.setAttribute("class","card border rounded");
+                                tableTitle.setAttribute("class","card-header text-white backgroundcolourcss h5");
+                                var text1 = document.createTextNode("Annapurna RM");
+                                tableTitle.appendChild(text1);
+                                // tableTitle.appendChild(crossmarker);
+                                table.setAttribute("class","table-responsive table-borderless table table-hover fontSize");
+        
+                                table.innerHTML+="<table><thead class=\"text-left\"><tr></tr></thead><tbody><tr><td>Ward Number</td><td>"+feature.properties.new_ward_n+"</td></tr><tr><td>District</td><td>"+feature.properties.district+"</td></tr><tr><td>Area (sq.km.)</td><td>"+feature.properties.area_sqkm+"</td></tr></tbody></table>";
+        
+                                tableContent.appendChild(tableTitle);
+                                tableOuter.appendChild(table);
+                                tableContent.appendChild(tableOuter);
+                                var x=document.getElementById("popup");
+                                x.appendChild(crossmarker);
+                                tableTitle.appendChild(crossmarker);
+                                document.getElementById("popup").appendChild(tableContent);
     
-                            tableContent.appendChild(tableTitle);
-                            tableOuter.appendChild(table);
-                            tableContent.appendChild(tableOuter);
-                            var x=document.getElementById("popup");
-                            x.appendChild(crossmarker);
-                            tableTitle.appendChild(crossmarker);
-                            document.getElementById("popup").appendChild(tableContent);
-
-                            document.getElementById("close").onclick=function(){
-                                // console.log("hello there");
-                                document.getElementById("popup").innerHTML="";
-                                document.getElementById("toHide").style.display="block";
+                                document.getElementById("close").onclick=function(){
+                                    // console.log("hello there");
+                                    document.getElementById("popup").innerHTML="";
+                                    document.getElementById("toHide").style.display="block";
+                                }
                             }
                         }
-                    }
-                });
-                var maintable= document.getElementById("maintable");
-                maintable.innerHTML="<table><thead class=\"text-left\"><tr></tr></thead><tbody><tr><td>District</td><td>"+feature.properties.district+"</td></tr><tr><td>Area (sq.km.)</td><td>"+area+"</td></tr></tbody></table>";
-                layer.bindTooltip(String(feature.properties.new_ward_n), {permanent:true,direction:'center',className: 'wardClassName'});
-            },
-        }).addTo(map);
-        map.fitBounds(dataLayer.getBounds());
-    })
+                    });
+                    var maintable= document.getElementById("maintable");
+                    maintable.innerHTML="<table><thead class=\"text-left\"><tr></tr></thead><tbody><tr><td>District</td><td>"+feature.properties.district+"</td></tr><tr><td>Area (sq.km.)</td><td>"+area+"</td></tr></tbody></table>";
+                    layer.bindTooltip(String(feature.properties.new_ward_n), {permanent:true,direction:'center',className: 'wardClassName'});
+                },
+            }).addTo(map);
+            map.fitBounds(dataLayer.getBounds());
+        })
+    }
+    var printPlugin = L.easyPrint({
+        hidden: true,
+        customWindowTitle:"Annapurana Map",
+        sizeModes: ['Current']
+    }).addTo(map);
+    $("#export").click(function(){
+        console.log("export map clicked");
+        printPlugin.printMap('CurrentSize', 'Annapurna');
+    });
+    
 });
