@@ -30,12 +30,12 @@ class school(models.Model):
         ('updated','Updated'),
         ('notupdated','Not Updated'),
     )
-    name = models.CharField(max_length=40,default='Null')
-    principal_name=models.CharField(max_length=40,blank=True)
+    name = models.CharField(max_length=100,default='Null')
+    principal_name=models.CharField(max_length=80,blank=True)
     no_of_buildings=models.FloatField(blank=True,null=True)
     no_of_staffs= models.FloatField(blank=True,null=True)
     no_of_students= models.FloatField(blank=True,null=True)
-    school_location= models.CharField(max_length=40,choices=WARD_CHOICES,null=True)
+    school_location= models.CharField(max_length=100,choices=WARD_CHOICES,null=True)
     status= models.CharField(max_length=20,choices=STATUS_CHOICES,default=STATUS_CHOICES[1][1],null=True)
     contact=models.CharField(max_length=10,blank=True,null=True)
     location = geomodels.PointField(srid=4326,null=True)
@@ -83,31 +83,3 @@ def make_author(sender, instance, created, **kwargs):
         
         
     # location= geomodels.PointField(srid=4326)
-
-
-# def GPX_Folder(instance, filename):
-#     return "uploaded_gpx_files/%s" % (filename)
-
-# class gpxFile(models.Model):
-#     title = models.CharField("Title", max_length=100)
-#     gpx_file = models.FileField(upload_to=GPX_Folder, blank=True)
-
-#     def __unicode__(self):
-#         return self.title
-
-# class GPXPoint(models.Model):
-#     name = models.CharField("Name", max_length=50, blank=True)
-#     description = models.CharField("Description", max_length=250, blank=True)
-#     gpx_file = models.ForeignKey('gpxFile', on_delete=models.DO_NOTHING,)
-#     point = geomodels.PointField()
-#     # objects = models.GeoManager()
-   
-#     def __unicode__(self):
-#         return unicode(self.name)
-    
-
-# class GPXTrack(models.Model):
-#     track = geomodels.MultiLineStringField()
-#     gpx_file = models.ForeignKey('gpxFile', on_delete=models.DO_NOTHING,)
-#     # objects = models.GeoManager()
- 

@@ -12,7 +12,7 @@ urlpatterns = [
     # path('gpxupload/',views.upload_gpx,name='gpx'),
     # path('api/', include(router.urls)),
     path('api/ward/<slug:wardno>/',views.annapurnaviewset.as_view()),
-    path('api/school/<slug:wardno>/<slug:type>/',views.schoolviewset.as_view()),
+    path('api/school/<slug:ward>/<slug:type>/',views.schoolviewset.as_view()),
     # path('baseapi/ward/')
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
   
