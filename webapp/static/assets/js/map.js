@@ -11,12 +11,12 @@ $(document).ready(function () {
 
     osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    });
+    }).addTo(map);
                 
     var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
-    }).addTo(map);
+    });
     googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
         maxZoom: 20,
         subdomains:['mt0','mt1','mt2','mt3']
@@ -78,8 +78,8 @@ $(document).ready(function () {
             dataLayer=L.geoJson(data,{
                 style:{
                     fillColor: " #172f76 ",
-                    fillOpacity: 0.9,
-                    color:"#ffffff",
+                    fillOpacity: 0.3,
+                    color:"#172f76",
                     opacity: 1,
                     weight: 2,
                 },
@@ -90,14 +90,14 @@ $(document).ready(function () {
                     layer.on({
                         mouseover: function () {
                             this.setStyle({
-                                'fillOpacity':0.3,
+                                'fillOpacity':0.1,
                             });
                         },
                         mouseout: function () {
                             this.setStyle({
                                 // 'fillColor': ' #ffff01 ',
                                 'fillColor': ' #172f76 ',
-                                'fillOpacity':0.9,
+                                'fillOpacity':0.3,
                             });
                         },
                         click: function (event) {
